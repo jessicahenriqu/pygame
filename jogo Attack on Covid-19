@@ -1,1 +1,356 @@
+import pygame from sys import exit
 
+pygame.init()
+
+
+# CORES
+white = (255,255,255)
+blue = (22,175,233)
+green =(58,193,0)
+red = (255,26,0)
+black = (0,0,0)
+
+
+# CREATE THE SCREEN
+tela = pygame.display.set_mode((800, 600)) # TITLE AND ICON
+pygame.display.set_caption("Attack on Covid-19") icon = pygame.image.load('person.png') pygame.display.set_icon(icon)
+FPS = 30
+fase = 0
+pressionar = pygame.key.get_pressed()
+
+
+#MENU
+menu = pygame.image.load('menu2.png') menuX = 0
+menuY = 0 #HISTORIA
+historia = pygame.image.load('historia.png') historiaX = 0
+historiaY = 0
+ 
+#QUARTO
+#parede
+parede = pygame.image.load('parede.png') paredeX = 140
+paredeY = 65
+
+
+#quarto
+quarto = pygame.image.load('quarto.png') quartoX = -130
+quartoY = 0
+
+
+#cama
+cama = pygame.image.load('cama.png') camaX = 450
+camaY = 370
+
+
+#pc
+pc = pygame.image.load('pc2.png') pcX = 170
+pcY = 250
+
+
+#porta
+porta = pygame.image.load('porta.png') portaX = 50
+portaY = 20
+
+
+# Player
+playerquarto = pygame.image.load('playermask.png') playerquartoX = 240
+playerquartoY = 80
+
+
+def playerquart(): tela.blit(playerquarto,(playerquartoX,playerquartoY))
+
+#rua #asfalto
+asfalto = pygame.image.load('asfalto.png')
+ 
+asfaltoX = 0
+asfaltoY = -1
+
+
+#predios
+predios = pygame.image.load('predios.png') prediosX = 0
+prediosY = 2
+
+
+# Player
+playerua = pygame.image.load('playerluta.png') playeruaX = 10
+playeruaY = 350
+
+
+#monstro
+mortos = pygame.image.load('mortos.png') mortosX = 900
+mortosY = 230
+
+
+#virus
+virus = pygame.image.load('mostro.png') virusX = 725
+virusY= 200
+
+
+#monstro
+virus2 = pygame.image.load('mostro.png') virus2X = 725
+virus2Y= 280
+
+
+#monstro
+virus3 = pygame.image.load('mostro.png') virus3X = 725
+virus3Y= 360
+
+
+#monstro
+virus4 = pygame.image.load('mostro.png') virus4X = 725
+virus4Y= 440
+ 
+#monstro
+virus5 = pygame.image.load('mostro.png') virus5X = 725
+virus5Y= 520
+
+
+#bala
+balamonstro1 = pygame.image.load('balamonstro.png') balamonstro1X = 725
+balamonstro1Y = 230
+
+
+balamonstro2 = pygame.image.load('balamonstro.png') balamonstro2X = 725
+balamonstro2Y = 300
+
+
+balamonstro3 = pygame.image.load('balamonstro.png') balamonstro3X = 725
+balamonstro3Y = 340
+
+
+balamonstro4 = pygame.image.load('balamonstro.png') balamonstro4X = 725
+balamonstro4Y = 400
+
+
+balamonstro5 = pygame.image.load('balamonstro.png') balamonstro5X = 725
+balamonstro5Y = 500
+
+
+#velocidadebalas velocidadebala1 = 9
+velocidadebala2 = 10
+velocidadebala3 = 8
+velocidadebala4 = 7
+velocidadebala5 = 10
+velocidadecaixao = 4
+velocidadebalao = 7
+
+
+def player5():
+tela.blit(virus5, (virus5X, virus5Y))
+ 
+def player4():
+tela.blit(virus4, (virus4X, virus4Y))
+
+
+def player3():
+tela.blit(virus3, (virus3X, virus3Y))
+
+
+def player2():
+tela.blit(virus2, (virus2X, virus2Y))
+
+
+def player1():
+tela.blit(virus,(virusX,virusY))
+
+
+def playerrua(): tela.blit(playerua,(playeruaX,playeruaY))
+
+•	#game loop
+clock = pygame.time.Clock()
+Nivel_de_vida = 100
+font = pygame.font.Font('freesansbold.ttf', 26)
+text = font.render("NIVEL DE VIDA:" + str(Nivel_de_vida), True, (black), (green)) textRect = text.get_rect()
+textRect.center = (0,30)
+virus0 = 5
+font = pygame.font.Font('freesansbold.ttf', 26)
+text2 = font.render("Restam virus:" + str(virus0), True, (black), (green)) textRect2 = text.get_rect()
+textRect.center = (120,50)
+
+
+•	#perdeu
+gameover = pygame.image.load('gameover.png') gameoverX = 0
+gameoverY = 0
+
+
+caixao = pygame.image.load('caixao.png') caixaoX = 800
+caixaoY = 250
+ 
+•	#ganhou
+balao = pygame.image.load('balao.png') balaoX = 0
+balaoY = 600
+
+
+venceu = pygame.image.load('ganhou2.png') venceuX = 0
+venceuY = 0
+
+
+•	#menu while fase == 0:
+
+tela.fill((green)) tela.blit(menu,(menuX, menuY))
+
+for event in pygame.event.get(): if event.type == pygame.QUIT:
+pygame.quit() exit()
+pressionar = pygame.key.get_pressed() if pressionar[pygame.K_RETURN]:
+fase = 1
+
+
+pygame.display.update()
+
+•	#historia while fase == 1:
+
+tela.fill((black))
+tela.blit(historia, (historiaX, historiaY))
+ 
+for event in pygame.event.get(): if event.type == pygame.QUIT:
+pygame.quit() exit()
+
+pressionar = pygame.key.get_pressed() if pressionar[pygame.K_RETURN]:
+fase = 2 pygame.display.update()
+
+
+
+•	#quarto while fase == 2:
+
+tela.fill((black))
+
+
+for event in pygame.event.get(): if event.type == pygame.QUIT:
+janela2 = False
+
+
+pressionar = pygame.key.get_pressed() if pressionar[pygame.K_UP]:
+playerquartoY -= 10
+if pressionar[pygame.K_LEFT]: playerquartoX -= 10
+if pressionar[pygame.K_RIGHT]: playerquartoX -= -10
+if pressionar[pygame.K_DOWN]: playerquartoY -= -10
+
+tela.blit(quarto, (quartoX, quartoY))
+ 
+tela.blit(cama, (camaX, camaY)) tela.blit(pc, (pcX, pcY)) tela.blit(porta, (portaX, portaY))
+
+if (playerquartoX - 50 + playerquartoY - 150 == portaX + portaY): print("Você foi pra rua")
+fase = 3
+
+
+playerquart() pygame.display.update()
+ 
+•	#rua while fase == 3:
+
+tela.fill((blue))
+for event in pygame.event.get():
+if event.type == pygame.QUIT: pygame.quit()
+exit()
+
+
+clock.tick(60)
+
+
+pressionar = pygame.key.get_pressed()
+if pressionar[pygame.K_UP] and playeruaY >= 130: playeruaY -= 20
+if pressionar[pygame.K_LEFT]: playeruaX -= 20
+ 
+if pressionar[pygame.K_RIGHT]:
+playeruaX -= -20
+if pressionar[pygame.K_DOWN] and playeruaY <= 480:
+playeruaY -= -20
+
+
+if pressionar[pygame.K_SPACE]:
+virus0 = virus0 - 1
+text2 = font.render("Restam virus:" + str(virus0), True, (black), (green))
+
+# detecta colisão
+
+
+if (playeruaX +20 + playeruaY +40 == balamonstro1Y + balamonstro1X): balamonstro1X = 801
+print("Você foi contaminado")
+Nivel_de_vida = Nivel_de_vida - 100
+text = font.render("NIVEL DE VIDA: " + str(Nivel_de_vida), True, (black), (green))
+
+
+if (playeruaX +20 + playeruaY + 30 == balamonstro2Y + balamonstro2X): balamonstro2X = 801
+print("Você foi contaminado")
+Nivel_de_vida = Nivel_de_vida - 100
+text = font.render("NIVEL DE VIDA: " + str(Nivel_de_vida), True, (black), (green))
+
+
+if (playeruaX +20 + playeruaY + 40 == balamonstro3Y + balamonstro3X): balamonstro3X = 801
+print("Você foi contaminado")
+Nivel_de_vida = Nivel_de_vida - 100
+text = font.render("NIVEL DE VIDA: " + str(Nivel_de_vida), True, (black), (green))
+
+
+if (playeruaX +20 + playeruaY +40 == balamonstro4Y + balamonstro4X):
+ 
+balamonstro4X = 801 print("Você foi contaminado")
+Nivel_de_vida = Nivel_de_vida - 100
+text = font.render("NIVEL DE VIDA: " + str(Nivel_de_vida), True, (black), (green))
+
+
+if (playeruaX +20 + playeruaY +40 == balamonstro5Y + balamonstro5X): balamonstro5X = 801
+print("Você foi contaminado")
+Nivel_de_vida = Nivel_de_vida - 100
+text = font.render("NIVEL DE VIDA: " + str(Nivel_de_vida), True, (black), (green))
+
+
+if (balamonstro1X <= -0): balamonstro1X = 725
+if (balamonstro2X <= -0): balamonstro2X = 725
+if (balamonstro3X <= -0): balamonstro3X = 725
+if (balamonstro4X <= -0): balamonstro4X = 725
+if (balamonstro5X <= -0): balamonstro5X = 725
+
+if (caixaoY <= -0):
+caixaoY = 800
+
+
+if (balaoY <= -0):
+balaoY = 600
+
+
+balamonstro1X -= velocidadebala1 balamonstro2X -= velocidadebala2 balamonstro3X -= velocidadebala3 balamonstro4X -= velocidadebala4 balamonstro5X -= velocidadebala5
+
+
+
+tela.blit(venceu, (venceuX, venceuY)) tela.blit(gameover, (gameoverX, gameoverY))
+ 
+tela.blit(predios, (prediosX, prediosY)) tela.blit(asfalto, (asfaltoX, asfaltoY))
+tela.blit(balamonstro1, (balamonstro1X, balamonstro1Y)) tela.blit(balamonstro2, (balamonstro2X, balamonstro2Y)) tela.blit(balamonstro3, (balamonstro3X, balamonstro3Y)) tela.blit(balamonstro4, (balamonstro4X, balamonstro4Y)) tela.blit(balamonstro5, (balamonstro5X, balamonstro5Y)) tela.blit(text, textRect)
+tela.blit(text2, textRect2) tela.blit(caixao, (caixaoX, caixaoY)) tela.blit(balao, (balaoX, balaoY)) tela.blit(caixao, (caixaoX, caixaoY)) tela.blit(balao, (balaoX, balaoY))
+
+player5() player4() player3() player2() player1() playerrua()
+
+if Nivel_de_vida == 0: playeruaX = 3000
+prediosX = 3000
+asfaltoX = 3000
+balamonstro1X = 9000
+balamonstro2X = 9000
+balamonstro3X = 9000
+balamonstro4X = 9000
+balamonstro5X = 9000
+virusX = 900
+virus2X = 900
+virus3X = 900
+virus4X = 900
+virus5X = 900
+caixaoX -= velocidadecaixao
+ 
+ 
+
+if virus0 == 0: playeruaX = 3000
+prediosX = 3000
+asfaltoX = 3000
+gameoverX = 3000
+virusX = 900
+virus2X = 900
+virus3X = 900
+virus4X = 900
+virus5X = 900
+mortosX = 725
+balamonstro1X = 9000
+balamonstro2X = 9000
+balamonstro3X = 9000
+balamonstro4X = 9000
+balamonstro5X = 9000 balaoY -= velocidadebalao
+
+
+pygame.display.update()
